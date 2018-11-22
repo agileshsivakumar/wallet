@@ -48,6 +48,8 @@ export class FacebookLoginComponent {
         if (isAuthenticated) {
           this.alertService.success('ACI wallet will use your name and email id from Facebook', true);
           this.router.navigate(['/register']);
+        } else {
+          this.alertService.error('Please enter valid email id and password', true);
         }
         this.isFacebookLoginFormLoading = false;
       });

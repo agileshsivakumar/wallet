@@ -39,7 +39,8 @@ export class RegisterComponent {
       password: new FormControl({value: 'password', disabled: true}, [
         Validators.required,
         Validators.minLength(6)
-      ])
+      ]),
+      cardNumber: new FormControl('', Validators.required),
     });
   }
 

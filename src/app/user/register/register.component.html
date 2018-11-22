@@ -2,7 +2,7 @@
 <form [formGroup]="registrationFormGroup" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="firstName">First Name</label>
-    <input [disabled]="true" type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" value="Agilesh"
+    <input [disabled]="true" type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
     />
     <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
       <div *ngIf="f.firstName.errors.required">First Name is required</div>
@@ -10,7 +10,7 @@
   </div>
   <div class="form-group">
     <label for="lastName">Last Name</label>
-    <input type="text" autocomplete="off" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" value="Sivakumar"
+    <input type="text" autocomplete="off" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
     />
     <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
       <div *ngIf="f.lastName.errors.required">Last Name is required</div>
@@ -18,7 +18,7 @@
   </div>
   <div class="form-group">
     <label for="emailId">Email Id</label>
-    <input type="text" autocomplete="off" formControlName="emailId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.emailId.errors }" value="agileshsivakumar@googlemail.com"
+    <input type="text" autocomplete="off" formControlName="emailId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.emailId.errors }"
     />
     <div *ngIf="submitted && f.emailId.errors" class="invalid-feedback">
       <div *ngIf="f.emailId.errors.required">Email Id is required</div>
@@ -39,6 +39,14 @@
     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
       <div *ngIf="f.password.errors.required">Password is required</div>
       <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="cardNumber">Card Number</label>
+    <input type="text" autocomplete="off" formControlName="cardNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cardNumber.errors }"
+    />
+    <div *ngIf="submitted && f.cardNumber.errors" class="invalid-feedback">
+      <div *ngIf="f.cardNumber.errors.required">Last Name is required</div>
     </div>
   </div>
   <div class="form-group">

@@ -27,7 +27,7 @@ export class UserService {
             this.setUserDetails(user);
           }
         });
-        return this._user.isLoggedIn;
+        return this._user ? this._user.isLoggedIn || false : false;
       })
     );
   }
