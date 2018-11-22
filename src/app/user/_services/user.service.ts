@@ -6,7 +6,7 @@ import { User, CreditCard } from '../_models/user.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/xml'
   })
 };
 
@@ -38,15 +38,39 @@ export class UserService {
     );
   }
 
-  public registerUser(registeredUser: CreditCard) {
-    const creditCardRequest = {
-      creditcard: registeredUser
-    };
+  public registerUser(creditCard: CreditCard) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/xml'
+    });
+    const creditCardRequest = `
+        <?xml version="1.0" encoding="UTF-8"?>
+        <creditcard>
+            <accountHolderName>${
+              creditCard.accountHolderName
+            }</accountHolderName>
+            <accountAddress1>${creditCard.accountAddress1}</accountAddress1>
+            <accountCity>${creditCard.accountCity}</accountCity>
+            <accountState>${creditCard.accountState}</accountState>
+            <accountPostalCode>${
+              creditCard.accountPostalCode
+            }</accountPostalCode>
+            <accountCountryCode>${
+              creditCard.accountCountryCode
+            }</accountCountryCode>
+            <creditCardNumber>${creditCard.creditCardNumber}</creditCardNumber>
+            <creditCardType>${creditCard.creditCardType}</creditCardType>
+            <expirationMonth>${creditCard.expirationMonth}</expirationMonth>
+            <expirationYear>${creditCard.expirationYear}</expirationYear>
+            <securityCode>${creditCard.securityCode}</securityCode>
+            <mailAddress>${creditCard.mailAddress}</mailAddress>
+        </creditcard>
+    `;
+    const hdr = { headers: headers, body: creditCardRequest };
     return this.http
-      .post('http://10.61.183.35:8080/ARPayment/payapi/myresource/credit/', creditCardRequest, httpOptions)
+      .post('http://10.61.183.35:8080/ARPayment/payapi/myresource/credit/', hdr)
       .pipe(
-        map((response) => {
-          return true;
+        map(response => {
+          return response;
         })
       );
   }

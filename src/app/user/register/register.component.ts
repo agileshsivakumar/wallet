@@ -56,6 +56,12 @@ export class RegisterComponent {
   get emailId() {
     return this.registrationFormGroup.get('emailId');
   }
+  get username() {
+    return this.registrationFormGroup.get('username');
+  }
+  get password() {
+    return this.registrationFormGroup.get('password');
+  }
   get cardNumber() {
     return this.registrationFormGroup.get('cardNumber');
   }
@@ -89,8 +95,8 @@ export class RegisterComponent {
       mailAddress: this.emailId.value
     };
     this.userService.registerUser(creditCardDetails).subscribe(
-      data => {
-        this.alertService.success('Registration successful', true);
+      (data: any) => {
+        this.alertService.success(`Registration successful! Your customer code is ${data.customerID}`, true);
         this.router.navigate(['']);
       },
       error => {
