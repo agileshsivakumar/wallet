@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { UserService } from '../_services/user.service';
 import { AlertService } from 'src/app/common-util/_services/alert.service';
+import { CreditCard } from '../_models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -41,6 +42,8 @@ export class RegisterComponent {
         Validators.minLength(6)
       ]),
       cardNumber: new FormControl('', Validators.required),
+      expiration: new FormControl('', Validators.required),
+      securityCode: new FormControl('', Validators.required),
     });
   }
 
@@ -53,11 +56,14 @@ export class RegisterComponent {
   get emailId() {
     return this.registrationFormGroup.get('emailId');
   }
-  get username() {
-    return this.registrationFormGroup.get('username');
+  get cardNumber() {
+    return this.registrationFormGroup.get('cardNumber');
   }
-  get password() {
-    return this.registrationFormGroup.get('password');
+  get expiration() {
+    return this.registrationFormGroup.get('expiration');
+  }
+  get securityCode() {
+    return this.registrationFormGroup.get('securityCode');
   }
 
   onRegistrationFormSubmit() {
@@ -68,7 +74,21 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    this.userService.registerUser(this.registrationFormGroup.value).subscribe(
+    const creditCardDetails: CreditCard = {
+      accountHolderName : `${this.firstName.value} ${this.lastName.value}`,
+      accountAddress1: '5 James Park',
+      accountCity: 'Sydney',
+      accountPostalCode: '4000',
+      accountState: 'NSW',
+      accountCountryCode: 'AUS',
+      creditCardNumber: this.cardNumber.value,
+      creditCardType: 'VISA',
+      expirationMonth: this.expiration.value.split('/')[0],
+      expirationYear: this.expiration.value.split('/')[1],
+      securityCode: this.securityCode.value,
+      mailAddress: this.emailId.value
+    };
+    this.userService.registerUser(creditCardDetails).subscribe(
       data => {
         this.alertService.success('Registration successful', true);
         this.router.navigate(['']);

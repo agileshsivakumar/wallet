@@ -1,8 +1,14 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { User } from '../_models/user.model';
+import { User, CreditCard } from '../_models/user.model';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+};
 
 @Injectable()
 export class UserService {
@@ -32,18 +38,17 @@ export class UserService {
     );
   }
 
-  public registerUser(registeredUser: User) {
-    return this.http.get('assets/users.json').pipe(
-      map((users: User[]) => {
-        users.forEach(user => {
-          if (user.username === registeredUser.username && user.password === registeredUser.password) {
-            user.isLoggedIn = true;
-            this.setUserDetails(user);
-          }
-        });
-        return this._user.isLoggedIn;
-      })
-    );
+  public registerUser(registeredUser: CreditCard) {
+    const creditCardRequest = {
+      creditcard: registeredUser
+    };
+    return this.http
+      .post('http://10.61.177.144:8080/ARPayment/payapi/myresource/credit/', creditCardRequest, httpOptions)
+      .pipe(
+        map((response) => {
+          return true;
+        })
+      );
   }
 
   private handleError(error: Response | any) {

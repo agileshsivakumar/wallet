@@ -46,7 +46,7 @@ export class FacebookLoginComponent {
       .authenticateUser(this.username.value, this.password.value)
       .subscribe(isAuthenticated => {
         if (isAuthenticated) {
-          this.alertService.success('ACI wallet will use your name and email id from Facebook', true);
+          this.alertService.success('ACI wallet used your name and email id from Facebook', true);
           this.router.navigate(['/register']);
         } else {
           this.alertService.error('Please enter valid email id and password', true);
