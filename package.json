@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "host":"ng build --prod --base-href https://agileshsivakumar.github.io/wallet/index.html && ngh --no-silent --dir dist/wallet"
   },
   "private": true,
   "dependencies": {

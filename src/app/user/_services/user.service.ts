@@ -43,7 +43,7 @@ export class UserService {
       creditcard: registeredUser
     };
     return this.http
-      .post('http://10.61.177.144:8080/ARPayment/payapi/myresource/credit/', creditCardRequest, httpOptions)
+      .post('http://10.61.183.35:8080/ARPayment/payapi/myresource/credit/', creditCardRequest, httpOptions)
       .pipe(
         map((response) => {
           return true;

@@ -51,7 +51,7 @@
   </div>
   <div class="form-group">
     <label for="expiration">Expiration</label>
-    <input type="text" autocomplete="off" formControlName="expiration" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.expiration.errors }"
+    <input type="text" placeholder="mm/yy" autocomplete="off" formControlName="expiration" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.expiration.errors }"
     />
     <div *ngIf="submitted && f.expiration.errors" class="invalid-feedback">
       <div *ngIf="f.expiration.errors.required">Expiration is required</div>
@@ -59,7 +59,7 @@
   </div>
   <div class="form-group">
     <label for="securityCode">Security Code</label>
-    <input type="text" autocomplete="off" formControlName="securityCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.securityCode.errors }"
+    <input type="password" autocomplete="off" formControlName="securityCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.securityCode.errors }"
     />
     <div *ngIf="submitted && f.securityCode.errors" class="invalid-feedback">
       <div *ngIf="f.securityCode.errors.required">Security Code is required</div>
