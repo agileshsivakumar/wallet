@@ -96,7 +96,7 @@ export class RegisterComponent {
     };
     this.userService.registerUser(creditCardDetails).subscribe(
       (data: any) => {
-        this.alertService.success(`Registration successful! Your customer code is ${data.customerID}`, true);
+        this.alertService.success(`Registration successful! Your customer code is ${data.uID}`, true);
         this.router.navigate(['']);
       },
       error => {
