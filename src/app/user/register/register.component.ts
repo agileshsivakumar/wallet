@@ -81,18 +81,18 @@ export class RegisterComponent {
 
   onSubmit() {
     const creditCardDetails: CreditCard = {
-      accountHolderName : `${this.firstName.value} ${this.lastName.value}`,
-      accountAddress1: '5 James Park',
-      accountCity: 'Sydney',
-      accountPostalCode: '4000',
-      accountState: 'NSW',
-      accountCountryCode: 'AUS',
+      accountHolderName : 'Test Credit Card Payment',
+      accountAddress1: '456 Some St.',
+      accountCity: 'Princeton',
+      accountPostalCode: '07312',
+      accountState: 'NJ',
+      accountCountryCode: 'US',
       creditCardNumber: this.cardNumber.value,
-      creditCardType: 'VISA',
+      creditCardType: 'MC',
       expirationMonth: this.expiration.value.split('/')[0],
       expirationYear: this.expiration.value.split('/')[1],
       securityCode: this.securityCode.value,
-      mailAddress: this.emailId.value
+      mailAddress: 'pradheep.rudresh@aciworldwide.com'
     };
     this.userService.registerUser(creditCardDetails).subscribe(
       (data: any) => {

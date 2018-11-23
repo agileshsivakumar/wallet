@@ -5,7 +5,7 @@
     <input [disabled]="true" type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
     />
     <div *ngIf="firstName.errors" class="invalid-feedback">
-      <div *ngIf="firstName.errors.required">First Name is required</div>
+      <div *ngIf="!!firstName.errors.required">First Name is required</div>
     </div>
   </div>
   <div class="form-group">
@@ -13,7 +13,7 @@
     <input type="text" autocomplete="off" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
     />
     <div *ngIf="lastName.errors" class="invalid-feedback">
-      <div *ngIf="lastName.errors.required">Last Name is required</div>
+      <div *ngIf="!!lastName.errors.required">Last Name is required</div>
     </div>
   </div>
   <div class="form-group">
@@ -21,7 +21,7 @@
     <input type="text" autocomplete="off" formControlName="emailId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.emailId.errors }"
     />
     <div *ngIf="emailId.errors" class="invalid-feedback">
-      <div *ngIf="emailId.errors.required">Email Id is required</div>
+      <div *ngIf="!!emailId.errors.required">Email Id is required</div>
     </div>
   </div>
   <div [hidden]="true" class="form-group">
@@ -29,7 +29,7 @@
     <input type="text" autocomplete="off" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
     />
     <div *ngIf="username.errors" class="invalid-feedback">
-      <div *ngIf="username.errors.required">Username is required</div>
+      <div *ngIf="!!username.errors.required">Username is required</div>
     </div>
   </div>
   <div [hidden]="true" class="form-group">
@@ -37,8 +37,8 @@
     <input type="password" autocomplete="off" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
     />
     <div *ngIf="password.errors" class="invalid-feedback">
-      <div *ngIf="password.errors.required">Password is required</div>
-      <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+      <div *ngIf="!!password.errors.required">Password is required</div>
+      <div *ngIf="!!password.errors.minlength">Password must be at least 6 characters</div>
     </div>
   </div>
   <div class="form-group">
@@ -46,7 +46,7 @@
     <input type="text" autocomplete="off" formControlName="cardNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cardNumber.errors }"
     />
     <div *ngIf="cardNumber.errors" class="invalid-feedback">
-      <div *ngIf="cardNumber.errors.required">Card Number is required</div>
+      <div *ngIf="!!cardNumber.errors.required">Card Number is required</div>
     </div>
   </div>
   <div class="form-group">
@@ -54,7 +54,7 @@
     <input type="text" placeholder="mm/yy" autocomplete="off" formControlName="expiration" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.expiration.errors }"
     />
     <div *ngIf="expiration.errors" class="invalid-feedback">
-      <div *ngIf="expiration.errors.required">Expiration is required</div>
+      <div *ngIf="!!expiration.errors.required">Expiration is required</div>
     </div>
   </div>
   <div class="form-group">
@@ -62,7 +62,7 @@
     <input type="password" autocomplete="off" formControlName="securityCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.securityCode.errors }"
     />
     <div *ngIf="securityCode.errors" class="invalid-feedback">
-      <div *ngIf="securityCode.errors.required">Security Code is required</div>
+      <div *ngIf="!!securityCode.errors.required">Security Code is required</div>
     </div>
   </div>
   <div class="form-group">
